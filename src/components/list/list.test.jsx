@@ -59,3 +59,34 @@ test('should update title', () => {
     expect(screen.queryByText('tenet')).not.toBeInTheDocument()
 
 })
+
+test('should display a form when new movie button is clicked', () => {
+    render (<List data={[
+        { title:'tenet',
+        id: "10"},
+        {title: 'amelie',
+         id: "11"},        
+    ]} />)
+    fireEvent.click(screen.getByText("Create"))  
+    const input = screen.getByPlaceholderText('title');
+    expect(input).toBeInTheDocument()    
+})
+
+test('should create new card when submit button is clicked', () => {
+    render (<List data={[]} />)
+
+   createMovie('inception')
+
+    createMovie('amelie')
+    
+    fireEvent.click(screen.getAllByText("Delete")[0])
+    expect(screen.queryByText('inception')).not.toBeInTheDocument();
+
+})
+
+function createMovie(movie){
+    fireEvent.click(screen.getByText("Create"))  
+    const input = screen.getByPlaceholderText('title');
+    fireEvent.change(input, { target: { value: movie } })
+    fireEvent.click(screen.getByText('Submit'))
+};

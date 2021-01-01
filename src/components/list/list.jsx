@@ -8,7 +8,10 @@ class List extends Component{
         super(props) 
         this.state = {
             movies: props.data.map(movie => ({...movie, edit: false})),
+            createMode: false,
         }
+
+        this.createMovie = this.createMovie.bind(this)
     }
 
     deleteCard(id){
@@ -40,13 +43,27 @@ class List extends Component{
         })
     }
 
+    createMovie(){
+        this.setState({
+            createMode: true,
+        })
+    }
+
+    createCard(movie){
+        const newMovie = { id: this.state.movies.length, ...movie }
+        this.setState({
+            movies: this.state.movies.concat(newMovie),
+            createMode: false,
+        })
+    }
+
     render(){
         return (
             <div>
                 {this.state.movies && this.state.movies.map(item => {
                     if (!item.edit) {
                         return <Card 
-                            key={item.title} 
+                            key={item.id} 
                             title={item.title} 
                             id={item.id}
                             deleteClick={(id) => this.deleteCard(id)}
@@ -59,7 +76,12 @@ class List extends Component{
                             submitClick={(movie)=>this.updateCard(movie)}/>                        
                     }
                         
-                })};
+                })}
+            <button onClick={this.createMovie}>Create</button>
+            {this.state.createMode && <Form 
+            title="title" id="0"
+            submitClick={(movie)=>this.createCard(movie)}
+            />}
             </div>
         );
     }
