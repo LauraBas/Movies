@@ -6,7 +6,7 @@ class List extends Component{
     constructor(props){
         super(props) 
         this.state = {
-            movies: props.data,
+            movies: props.data.map(movie => ({...movie, edit: false})),
         }
     }
 
@@ -15,17 +15,36 @@ class List extends Component{
             movies: this.state.movies.filter(item => id != item.id)
         })
     }
+    editCard(id){
+        this.setState({
+            movies: this.state.movies.map(item =>{
+                if (id == item.id) {
+                    return {...item, edit: true}
+                } else {
+                    return {...item, edit: false}
+                }
+            })
+        })
+    }
 
     render(){
         return (
             <div>
-                {this.state.movies && this.state.movies.map(item => 
-                    <Card 
-                        key={item.title} 
-                        title={item.title} 
-                        id={item.id}
-                        deleteClick={(id) => this.deleteCard(id)}/>)
-                };
+                {this.state.movies && this.state.movies.map(item => {
+                    if (!item.edit) {
+                        return <Card 
+                            key={item.title} 
+                            title={item.title} 
+                            id={item.id}
+                            deleteClick={(id) => this.deleteCard(id)}
+                            editClick={(id)=>this.editCard(id)}/>
+                    } else {
+                        return <form key={item.id}>
+                            <input placeholder={item.title} />
+                        </form> 
+                    }
+                        
+                })};
             </div>
         );
     }

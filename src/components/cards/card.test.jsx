@@ -28,4 +28,12 @@ test('should calls onClick with id once when clicked', () => {
     expect(deleteClick).toHaveBeenCalledWith("5")
 })
 
+test('should call editClick with id once when clicked', () => {
+    const editClick = jest.fn()
+    render(<Card id="5" editClick={editClick}/>)
+    fireEvent.click(screen.getByText('Edit'))
+    expect(editClick).toHaveBeenCalledTimes(1)
+    expect(editClick).toHaveBeenCalledWith("5")
+})
+
 
