@@ -12,7 +12,7 @@ class Form extends Component {
 
     handleClick(e) {
         e.preventDefault();
-        return this.props.submitClick({title: this.state.title})
+        return this.props.submitClick({title: this.state.title, id: this.props.id})
     }
     handleChange(e) {
         e.preventDefault();
