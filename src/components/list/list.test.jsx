@@ -3,16 +3,16 @@ import List from "./list";
 
 test('should display one card if data contains one movie', () => {
     render(<List data={[{
-        title:'tenet'
+        title:'tenet', id:"0"
     }]} />);
     expect(screen.getByText('tenet')).toBeInTheDocument();
 })
 
 test('should display all cards from data',() => {
     render(<List data = {[
-        {title: 'tenet'},
-        {title: 'inception'},
-        {title: 'amelie'} 
+        {title: 'tenet', id:"0"},
+        {title: 'inception', id:"1"},
+        {title: 'amelie', id:"2"} 
     ]} />);
     expect(screen.getByText('tenet')).toBeInTheDocument();
     expect(screen.getByText('inception')).toBeInTheDocument();
@@ -75,12 +75,12 @@ test('should display a form when new movie button is clicked', () => {
 test('should create new card when submit button is clicked', () => {
     render (<List data={[]} />)
 
-   createMovie('inception')
-
+    createMovie('inception')
     createMovie('amelie')
-    
+
     fireEvent.click(screen.getAllByText("Delete")[0])
     expect(screen.queryByText('inception')).not.toBeInTheDocument();
+    expect(screen.getByText('amelie')).toBeInTheDocument();
 
 })
 

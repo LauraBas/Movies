@@ -50,7 +50,7 @@ class List extends Component{
     }
 
     createCard(movie){
-        const newMovie = { id: this.state.movies.length, ...movie }
+        const newMovie = { id: this.state.movies.length, title: movie.title }
         this.setState({
             movies: this.state.movies.concat(newMovie),
             createMode: false,
@@ -77,11 +77,13 @@ class List extends Component{
                     }
                         
                 })}
-            <button onClick={this.createMovie}>Create</button>
-            {this.state.createMode && <Form 
-            title="title" id="0"
-            submitClick={(movie)=>this.createCard(movie)}
-            />}
+            {this.state.createMode 
+                ? <Form 
+                    title="title" 
+                    id="bobo"
+                    submitClick={(movie)=>this.createCard(movie)}
+                    />
+                : <button onClick={this.createMovie}>Create</button>}
             </div>
         );
     }
