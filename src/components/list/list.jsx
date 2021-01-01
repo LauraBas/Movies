@@ -1,5 +1,6 @@
 import  React, { Component } from 'react';
 import Card from '../cards/card';
+import Form from '../form/form';
 import { render } from 'react-dom';
 
 class List extends Component{
@@ -39,9 +40,7 @@ class List extends Component{
                             deleteClick={(id) => this.deleteCard(id)}
                             editClick={(id)=>this.editCard(id)}/>
                     } else {
-                        return <form key={item.id}>
-                            <input placeholder={item.title} />
-                        </form> 
+                        return <Form key={item.id} title={item.title}/>                        
                     }
                         
                 })};
