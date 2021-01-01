@@ -28,6 +28,18 @@ class List extends Component{
         })
     }
 
+    updateCard(updatedMovie){
+        this.setState({
+            movies: this.state.movies.map(movie=>{
+                if(updatedMovie.id == movie.id) {
+                    return {edit: false, ...updatedMovie}
+                } else {
+                    return movie
+                }
+            })
+        })
+    }
+
     render(){
         return (
             <div>
@@ -40,7 +52,11 @@ class List extends Component{
                             deleteClick={(id) => this.deleteCard(id)}
                             editClick={(id)=>this.editCard(id)}/>
                     } else {
-                        return <Form key={item.id} title={item.title}/>                        
+                        return <Form 
+                            key={item.id} 
+                            title={item.title}
+                            id={item.id}
+                            submitClick={(movie)=>this.updateCard(movie)}/>                        
                     }
                         
                 })};

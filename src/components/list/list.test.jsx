@@ -42,3 +42,20 @@ test('should display a form when edit button is clicked', () =>{
     fireEvent.click(screen.getAllByText("Edit")[0])
     expect(screen.getByPlaceholderText('tenet')).toBeInTheDocument();
 })
+
+test('should update title', () => {
+    render (<List data={[
+        { title:'tenet',
+        id: "10"},
+        {title: 'amelie',
+         id: "11"},        
+    ]} />)
+    fireEvent.click(screen.getAllByText("Edit")[0])
+    const input = screen.getByPlaceholderText('tenet');
+    fireEvent.change(input, { target: { value: 'inception' } })
+    fireEvent.click(screen.getByText('Submit'))
+
+    expect(screen.getByText('inception')).toBeInTheDocument()
+    expect(screen.queryByText('tenet')).not.toBeInTheDocument()
+
+})
