@@ -54,7 +54,7 @@ class List extends Component{
     }
 
     createCard(movie){
-        const newMovie = { id: uuidv4(), title: movie.title }
+        const newMovie = { id: uuidv4(), ...movie }
         this.setState({
             movies: this.state.movies.concat(newMovie),
             createMode: false,
@@ -69,7 +69,10 @@ class List extends Component{
                         if (!item.edit) {
                             return <CardMovie
                                 key={item.id} 
+                                ranking={item.ranking}
                                 title={item.title} 
+                                type={item.type}
+                                director={item.director}
                                 id={item.id}
                                 deleteClick={(id) => this.deleteCard(id)}
                                 editClick={(id)=>this.editCard(id)}/>
@@ -77,6 +80,9 @@ class List extends Component{
                             return <EditForm
                                 key={item.id} 
                                 title={item.title}
+                                ranking={item.ranking}
+                                type={item.type}
+                                director={item.director}
                                 id={item.id}
                                 submitClick={(movie)=>this.updateCard(movie)}/>                        
                         }
