@@ -1,7 +1,8 @@
 import  React, { Component } from 'react';
 import Card from '../cards/card';
 import Form from '../form/form';
-import { render } from 'react-dom';
+import CreateForm from '../form/createForm';
+
 
 class List extends Component{
     constructor(props){
@@ -78,9 +79,7 @@ class List extends Component{
                         
                 })}
             {this.state.createMode 
-                ? <Form 
-                    title="title" 
-                    id="bobo"
+                ? <CreateForm                    
                     submitClick={(movie)=>this.createCard(movie)}
                     />
                 : <button onClick={this.createMovie}>Create</button>}
