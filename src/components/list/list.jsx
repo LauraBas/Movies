@@ -1,8 +1,10 @@
 import  React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import Card from '../cards/card';
+import CardMovie from '../cards/cardMovie';
 import EditForm from '../form/editForm';
 import CreateForm from '../form/createForm';
+import Button from 'react-bootstrap/Button';
+import CardDeck from 'react-bootstrap/CardDeck'
 
 
 class List extends Component{
@@ -62,28 +64,30 @@ class List extends Component{
     render(){
         return (
             <div>
-                {this.state.movies && this.state.movies.map(item => {
-                    if (!item.edit) {
-                        return <Card 
-                            key={item.id} 
-                            title={item.title} 
-                            id={item.id}
-                            deleteClick={(id) => this.deleteCard(id)}
-                            editClick={(id)=>this.editCard(id)}/>
-                    } else {
-                        return <EditForm
-                            key={item.id} 
-                            title={item.title}
-                            id={item.id}
-                            submitClick={(movie)=>this.updateCard(movie)}/>                        
-                    }
-                        
-                })}
-            {this.state.createMode 
-                ? <CreateForm                    
-                    submitClick={(movie)=>this.createCard(movie)}
-                    />
-                : <button onClick={this.createMovie}>Create</button>}
+                <CardDeck>
+                    {this.state.movies && this.state.movies.map(item => {
+                        if (!item.edit) {
+                            return <CardMovie
+                                key={item.id} 
+                                title={item.title} 
+                                id={item.id}
+                                deleteClick={(id) => this.deleteCard(id)}
+                                editClick={(id)=>this.editCard(id)}/>
+                        } else {
+                            return <EditForm
+                                key={item.id} 
+                                title={item.title}
+                                id={item.id}
+                                submitClick={(movie)=>this.updateCard(movie)}/>                        
+                        }
+                            
+                    })}
+                </CardDeck>
+                {this.state.createMode 
+                    ? <CreateForm                    
+                        submitClick={(movie)=>this.createCard(movie)}
+                        />
+                    : <Button variant="warning" onClick={this.createMovie}>Create</Button>}
             </div>
         );
     }
