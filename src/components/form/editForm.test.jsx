@@ -1,15 +1,15 @@
 import {render, screen, fireEvent } from  '@testing-library/react'
 
-import Form from "./form";
+import EditForm from "./editForm";
 
 test('Should render a placeholder', () => {
-    render( <Form title="tenet"/>)
+    render( <EditForm title="tenet"/>)
     expect(screen.getByPlaceholderText('tenet')).toBeInTheDocument();
 });
 
 test('should call submit method when submit button is clicked', () => {
     const submitClick = jest.fn()
-    render(<Form title="tenet" id="1" submitClick={submitClick}/>)
+    render(<EditForm title="tenet" id="1" submitClick={submitClick}/>)
     const input = screen.getByPlaceholderText('tenet');
     fireEvent.change(input, { target: { value: 'amelie' } })
     fireEvent.click(screen.getByText('Submit'))

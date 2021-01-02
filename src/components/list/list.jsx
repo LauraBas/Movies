@@ -1,6 +1,6 @@
 import  React, { Component } from 'react';
 import Card from '../cards/card';
-import Form from '../form/form';
+import EditForm from '../form/editForm';
 import CreateForm from '../form/createForm';
 
 
@@ -70,7 +70,7 @@ class List extends Component{
                             deleteClick={(id) => this.deleteCard(id)}
                             editClick={(id)=>this.editCard(id)}/>
                     } else {
-                        return <Form 
+                        return <EditForm
                             key={item.id} 
                             title={item.title}
                             id={item.id}
