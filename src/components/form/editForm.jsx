@@ -35,23 +35,31 @@ class EditForm extends Component {
     render() {
         return (
             <div>
-                <Form>
-                    <input 
+                 <Form style={{ width: '18rem' }}>   
+                 <Form.Group>
+                        <Form.Control type="input" 
                         placeholder={this.props.title} 
                         onChange={(e) => this.handleChange(e, "title")}
                         value={this.state.title}/>
-                    <input 
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control type="input" 
                         placeholder={this.props.ranking} 
                         onChange={(e) => this.handleChange(e, "ranking")}
                         value={this.state.ranking}/>
-                    <input 
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control type="input" 
                         placeholder={this.props.type} 
                         onChange={(e) => this.handleChange(e, "type")}
                         value={this.state.type}/>
-                    <input 
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control type="input" 
                         placeholder={this.props.director} 
                         onChange={(e) => this.handleChange(e, "director")}
                         value={this.state.director}/>
+                    </Form.Group>
                     <Button variant="success" type="submit" onClick={(e) => this.handleClick(e)}>Submit</Button>
                 </Form>
             </div>

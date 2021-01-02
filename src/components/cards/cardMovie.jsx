@@ -5,8 +5,8 @@ import Card from 'react-bootstrap/Card';
 const CardMovie = function(props) {
     return (
         <div>
-            <Card  style={{ width: '18rem' }}>
-                <Card.Header>{props.ranking}</Card.Header>
+            <Card style={{ width: '18rem' }}>
+                <Card.Header>Ranking: {props.ranking}</Card.Header>
                 <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/' + props.title + ".jpg"} />
                 <Card.Body>
                     <Card.Title>{props.title}</Card.Title>
