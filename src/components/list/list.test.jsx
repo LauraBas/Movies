@@ -77,7 +77,7 @@ test('should create new card when submit button is clicked', () => {
 
     createMovie('inception')
     createMovie('amelie')
-
+   
     fireEvent.click(screen.getAllByText("Delete")[0])
     expect(screen.queryByText('inception')).not.toBeInTheDocument();
     expect(screen.getByText('amelie')).toBeInTheDocument();

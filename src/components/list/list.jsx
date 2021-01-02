@@ -1,4 +1,5 @@
 import  React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Card from '../cards/card';
 import EditForm from '../form/editForm';
 import CreateForm from '../form/createForm';
@@ -51,7 +52,7 @@ class List extends Component{
     }
 
     createCard(movie){
-        const newMovie = { id: this.state.movies.length, title: movie.title }
+        const newMovie = { id: uuidv4(), title: movie.title }
         this.setState({
             movies: this.state.movies.concat(newMovie),
             createMode: false,
