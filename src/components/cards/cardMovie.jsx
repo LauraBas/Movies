@@ -6,12 +6,12 @@ const CardMovie = function(props) {
     return (
         <div>
             <Card  style={{ width: '18rem' }}>
-                <Card.Header>Ranking</Card.Header>
+                <Card.Header>{props.ranking}</Card.Header>
                 <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/' + props.title + ".jpg"} />
                 <Card.Body>
                     <Card.Title>{props.title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">accion</Card.Subtitle>
-                    <Card.Text>movie director</Card.Text>
+                    <Card.Subtitle className="mb-2 text-muted">{props.type}</Card.Subtitle>
+                    <Card.Text>{props.director}</Card.Text>
                 </Card.Body>   
                 <ButtonGroup aria-label="Basic example">
                     <Button variant="danger" onClick={() => props.deleteClick(props.id)}>Delete</Button>

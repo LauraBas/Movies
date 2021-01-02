@@ -9,7 +9,11 @@ test('Should render a movie title', () => {
 })
 
 test('Should render movies titles', () => {
-    render (<CardMovie title="tenet, inception, amelie"/>)
+    render (<CardMovie
+        ranking="10, 10, 9"
+        title="tenet, inception, amelie"
+        type="accion, drama, romantic"
+        director="Christopher Nollan, Christopher Nollan, Yann Tiersenn"/>)
     const titles = screen.getByText('tenet, inception, amelie')
     expect(titles).toBeInTheDocument();
 })
