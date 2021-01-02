@@ -1,4 +1,6 @@
 import  React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
 
 class CreateForm extends Component {
     constructor(props){
@@ -24,13 +26,13 @@ class CreateForm extends Component {
     render() {
         return (
             <div>
-                <form>
+                <Form>
                     <input placeholder="title"
                     onChange={this.handleChange}
                     value={this.state.title}
                     />                    
-                    <button type="submit" onClick={(e) => this.handleClick(e)}>Submit</button>
-                </form>
+                    <Button variant="success"type="submit" onClick={(e) => this.handleClick(e)}>Submit</Button>
+                </Form>
             </div>
         )
     }

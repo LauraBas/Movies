@@ -1,4 +1,6 @@
 import  React, { Component } from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 class EditForm extends Component {
 
@@ -24,13 +26,13 @@ class EditForm extends Component {
     render() {
         return (
             <div>
-                <form>
+                <Form>
                     <input 
                         placeholder={this.props.title} 
                         onChange={this.handleChange}
                         value={this.state.title}/>
-                    <button type="submit" onClick={(e) => this.handleClick(e)}>Submit</button>
-                </form>
+                    <Button variant="success" type="submit" onClick={(e) => this.handleClick(e)}>Submit</Button>
+                </Form>
             </div>
         )
     }
