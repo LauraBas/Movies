@@ -7,19 +7,28 @@ class EditForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            title: props.title
+            title: props.title,
+            ranking: props.ranking,
+            type: props.type,
+            director: props.director,
         }
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleClick(e) {
         e.preventDefault();
-        return this.props.submitClick({title: this.state.title, id: this.props.id})
+        return this.props.submitClick({
+            id: this.props.id,
+            title: this.state.title,
+            ranking: this.state.ranking,
+            type: this.state.type,
+            director: this.state.director,    
+        })
     }
-    handleChange(e) {
+    handleChange(e, field) {
         e.preventDefault();
         this.setState({
-            title: e.target.value
+            [field]: e.target.value,
         })
     }
 
@@ -29,8 +38,20 @@ class EditForm extends Component {
                 <Form>
                     <input 
                         placeholder={this.props.title} 
-                        onChange={this.handleChange}
+                        onChange={(e) => this.handleChange(e, "title")}
                         value={this.state.title}/>
+                    <input 
+                        placeholder={this.props.ranking} 
+                        onChange={(e) => this.handleChange(e, "ranking")}
+                        value={this.state.ranking}/>
+                    <input 
+                        placeholder={this.props.type} 
+                        onChange={(e) => this.handleChange(e, "type")}
+                        value={this.state.type}/>
+                    <input 
+                        placeholder={this.props.director} 
+                        onChange={(e) => this.handleChange(e, "director")}
+                        value={this.state.director}/>
                     <Button variant="success" type="submit" onClick={(e) => this.handleClick(e)}>Submit</Button>
                 </Form>
             </div>
