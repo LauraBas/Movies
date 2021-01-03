@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import List from "./list";
+import List from "./List";
 
 function createMovie(movie){
     fireEvent.click(screen.getByText("Create")); 

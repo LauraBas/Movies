@@ -1,10 +1,9 @@
 import  React, { Component } from 'react';
-import CardMovie from '../cards/cardMovie';
-import EditForm from '../form/editForm';
-import CreateForm from '../form/createForm';
+import CardMovie from '../cards/CardMovie';
+import EditForm from '../form/EditForm';
+import CreateForm from '../form/CreateForm';
 import Button from 'react-bootstrap/Button';
 import CardDeck from 'react-bootstrap/CardDeck';
-import Carousel from 'react-bootstrap/Carousel'
 
 class List extends Component{
     constructor(props){

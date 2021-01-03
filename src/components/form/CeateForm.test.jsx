@@ -1,6 +1,6 @@
 import {render, screen, fireEvent } from  '@testing-library/react'
 
-import CreateForm from "./createForm";
+import CreateForm from "./CreateForm";
 
 test('Should render a placeholder', () => {
     render( <CreateForm />)

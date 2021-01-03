@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 
-import CardMovie from "./cardMovie";
+import CardMovie from "./CardMovie";
 
 test('Should render a movie title', () => {
     render ( <CardMovie title="tenet"/>)

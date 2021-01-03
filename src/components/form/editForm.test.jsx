@@ -1,6 +1,6 @@
 import {render, screen, fireEvent } from  '@testing-library/react'
 
-import EditForm from "./editForm";
+import EditForm from "./EditForm";
 
 test('Should render a placeholder', () => {
     render( <EditForm title="tenet"/>)

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import List from "./list"
+import List from "./List"
 import ApiClient from '../../ApiClient'
 
 class ListContainer extends Component {
