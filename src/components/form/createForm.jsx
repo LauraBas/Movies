@@ -61,7 +61,7 @@ class CreateForm extends Component {
                             value={this.state.director}/>                
                     </Form.Group>
                     <ButtonGroup aria-label="Basic example">
-                        <Button variant="success"type="submit" onClick={(e) => this.handleClick(e)}>Submit</Button>
+                        <Button variant="success" type="submit" onClick={(e) => this.handleClick(e)}>Submit</Button>
                     </ButtonGroup>
                 </Form>
             </div>

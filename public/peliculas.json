@@ -1,0 +1,11 @@
+{
+  "peliculas": [
+    {
+      "id": 4,
+      "title": "Tenet",
+      "ranking": 5,
+      "type": "accion",
+      "director": "Christopher Nolan"
+    }
+  ]
+}

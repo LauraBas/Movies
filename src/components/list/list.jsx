@@ -1,72 +1,53 @@
 import  React, { Component } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import CardMovie from '../cards/cardMovie';
 import EditForm from '../form/editForm';
 import CreateForm from '../form/createForm';
 import Button from 'react-bootstrap/Button';
-import CardDeck from 'react-bootstrap/CardDeck'
-
+import CardDeck from 'react-bootstrap/CardDeck';
+import Carousel from 'react-bootstrap/Carousel'
 
 class List extends Component{
     constructor(props){
         super(props) 
         this.state = {
-            movies: props.data.map(movie => ({...movie, edit: false})),
+            editId: "-1",
             createMode: false,
         }
-
-        this.createMovie = this.createMovie.bind(this)
+        this.toggleMovieForm = this.toggleMovieForm.bind(this)
     }
 
     deleteCard(id){
-        this.setState({
-            movies: this.state.movies.filter(item => id != item.id)
-        })
+        this.props.handleDelete(id)
     }
+
     editCard(id){
         this.setState({
-            movies: this.state.movies.map(item =>{
-                if (id == item.id) {
-                    return {...item, edit: true}
-                } else {
-                    return {...item, edit: false}
-                }
-            })
+            editId: id,
         })
     }
 
     updateCard(updatedMovie){
+        this.props.handleUpdate(updatedMovie)
         this.setState({
-            movies: this.state.movies.map(movie=>{
-                if(updatedMovie.id == movie.id) {
-                    return {edit: false, ...updatedMovie}
-                } else {
-                    return movie
-                }
-            })
+            editId: "-1"
         })
     }
 
-    createMovie(){
-        this.setState({
-            createMode: true,
-        })
+    toggleMovieForm(){
+        this.setState({ createMode: !this.state.createMode })
     }
 
     createCard(movie){
-        const newMovie = { id: uuidv4(), ...movie }
-        this.setState({
-            movies: this.state.movies.concat(newMovie),
-            createMode: false,
-        })
+        this.props.handleCreate(movie)
+        this.toggleMovieForm();
     }
-
+     
     render(){
         return (
-            <div>
+            <div>               
                 <CardDeck>
-                    {this.state.movies && this.state.movies.map(item => {
-                        if (!item.edit) {
+                    {this.props.data && this.props.data.map(item => {
+                        if (this.state.editId !== item.id) {
                             return <CardMovie
                                 key={item.id} 
                                 ranking={item.ranking}
@@ -93,7 +74,7 @@ class List extends Component{
                     ? <CreateForm                    
                         submitClick={(movie)=>this.createCard(movie)}
                         />
-                    : <Button variant="warning" onClick={this.createMovie}>Create</Button>}
+                    : <Button variant="warning" onClick={this.toggleMovieForm}>Create</Button>}
             </div>
         );
     }
