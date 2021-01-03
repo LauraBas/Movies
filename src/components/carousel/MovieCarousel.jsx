@@ -29,7 +29,7 @@ function MovieCarousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={process.env.PUBLIC_URL + "/img/slider/movie2.jpeg"}
+          src={process.env.PUBLIC_URL + "/img/slider/movie2.jpg"}
           alt="Third slide"
         />
         <Carousel.Caption>
