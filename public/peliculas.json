@@ -2,10 +2,17 @@
   "peliculas": [
     {
       "id": 4,
-      "title": "Tenet",
+      "title": "8",
       "ranking": 5,
       "type": "accion",
       "director": "Christopher Nolan"
+    },
+    {
+      "title": "5",
+      "ranking": "",
+      "type": "",
+      "director": "",
+      "id": 5
     }
   ]
 }
