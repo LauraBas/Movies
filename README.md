@@ -8,7 +8,7 @@
 
 - Run Json
 
-    ` json-server --watch peliculas.json `
+    ` json-server -p 3001 --watch peliculas.json `
 
 
 
