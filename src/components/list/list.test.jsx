@@ -61,7 +61,7 @@ test('should calls handleCreate with movie when submit button is clicked', () =>
     
 })
 
-test('should display a form when new movie button is clicked', () => {
+test('should display a form when create movie button is clicked', () => {
     render (<List data={[
         {title: 'tenet', id:"0", ranking: 10, type:"accion", director:"Nollan"},
         {title: 'amelie', id:"2" , ranking: 10, type:"romantic", director:"Tiersen"},       
@@ -92,6 +92,18 @@ test('should display a form when edit button is clicked', () =>{
     
     expect(screen.getByPlaceholderText('tenet')).toBeInTheDocument();
 });
+
+test('should clean the edit form when cancel button is clicked', () => {    
+    render(<List data={[
+        {title: 'tenet', id:"0", ranking: 10, type:"accion", director:"Nollan"}]}/>)  
+    
+    fireEvent.click(screen.getByText("Edit")) 
+    const submitButton = screen.queryByText('Submit')
+
+    fireEvent.click(screen.getByText("Cancel"))
+
+    expect(submitButton).not.toBeInTheDocument()    
+})
 
 function updateMovieTitle(movieToUpdate, movieChanged) {
     fireEvent.click(screen.getByText("Edit"))

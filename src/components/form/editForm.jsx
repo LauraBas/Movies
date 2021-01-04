@@ -13,6 +13,7 @@ class EditForm extends Component {
             director: props.director,
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleCancelClick = this.handleCancelClick.bind(this);
     }
 
     handleClick(e) {
@@ -25,6 +26,12 @@ class EditForm extends Component {
             director: this.state.director,    
         })
     }
+
+    handleCancelClick(e){
+        e.preventDefault();
+        return this.props.cancelEditClick()
+    }
+
     handleChange(e, field) {
         e.preventDefault();
         this.setState({
@@ -61,6 +68,7 @@ class EditForm extends Component {
                         value={this.state.director}/>
                     </Form.Group>
                     <Button variant="success" type="submit" onClick={(e) => this.handleClick(e)}>Submit</Button>
+                    <Button variant="info" onClick={(e) => this.handleCancelClick(e)}>Cancel</Button>
                 </Form>
             </div>
         )

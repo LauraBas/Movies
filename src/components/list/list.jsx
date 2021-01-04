@@ -32,6 +32,12 @@ class List extends Component{
         })
     }
 
+    cancelEditForm(){
+        this.setState({
+            editId: "-1"
+        })
+    }
+
     toggleMovieForm(){
         this.setState({ createMode: !this.state.createMode })
     }
@@ -68,7 +74,8 @@ class List extends Component{
                                 type={item.type}
                                 director={item.director}
                                 id={item.id}
-                                submitClick={(movie)=>this.updateCard(movie)}/>                        
+                                submitClick={(movie)=>this.updateCard(movie)}
+                                cancelEditClick={()=>this.cancelEditForm()}/>                        
                         }
                             
                     })}
