@@ -53,7 +53,13 @@ class List extends Component{
      
     render(){
         return (
-            <div>               
+            <div>
+                {this.state.createMode 
+                    ? <CreateForm                    
+                        submitClick={(movie)=>this.createCard(movie)}
+                        cancelClick={()=>this.cancelCreateForm()}
+                        />
+                    : <Button variant="warning" onClick={this.toggleMovieForm}>Create</Button>}               
                 <CardDeck>
                     {this.props.data && this.props.data.map(item => {
                         if (this.state.editId !== item.id) {
@@ -82,12 +88,6 @@ class List extends Component{
                             
                     })}
                 </CardDeck>
-                {this.state.createMode 
-                    ? <CreateForm                    
-                        submitClick={(movie)=>this.createCard(movie)}
-                        cancelClick={()=>this.cancelCreateForm()}
-                        />
-                    : <Button variant="warning" onClick={this.toggleMovieForm}>Create</Button>}
             </div>
         );
     }
