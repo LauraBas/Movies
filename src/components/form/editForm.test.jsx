@@ -9,9 +9,11 @@ test('Should render a placeholder', () => {
 
 test('should call submit method when submit button is clicked', () => {
     const submitClick = jest.fn()
-    render(<EditForm title='tenet' id="1" ranking="10" type="accion" director="Nollan" submitClick={submitClick}/>)
+    render(<EditForm title='tenet' image="img/tenet.jpg" id="1" ranking="10" type="accion" director="Nollan" submitClick={submitClick}/>)
     const title = screen.getByPlaceholderText('tenet');
-    fireEvent.change(title, { target: { value: 'amelie' } })
+    fireEvent.change(title, { target: { value: 'amelie' }})
+    const image = screen.getByPlaceholderText('img/tenet.jpg');
+    fireEvent.change(image, { target: { value: 'img/amelie.jpg' }})
     const ranking =  screen.getByPlaceholderText('10');
     fireEvent.change(ranking, { target: { value: '8' } })
     const type = screen.getByPlaceholderText('accion')
@@ -22,7 +24,7 @@ test('should call submit method when submit button is clicked', () => {
     fireEvent.click(screen.getByText('Submit'))
 
     expect(submitClick).toHaveBeenCalledTimes(1)
-    expect(submitClick).toHaveBeenCalledWith({title: "amelie", id:"1", ranking:"8", type:"romantic", director:"Tiersenn"})
+    expect(submitClick).toHaveBeenCalledWith({title: "amelie",image: "img/amelie.jpg", id:"1", ranking:"8", type:"romantic", director:"Tiersenn"})
 })
 
 test('should call cancel edit method when cancel button is clicked', () => {

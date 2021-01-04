@@ -8,6 +8,7 @@ class EditForm extends Component {
         super(props)
         this.state = {
             title: props.title,
+            image: props.image,
             ranking: props.ranking,
             type: props.type,
             director: props.director,
@@ -21,6 +22,7 @@ class EditForm extends Component {
         return this.props.submitClick({
             id: this.props.id,
             title: this.state.title,
+            image: this.state.image,
             ranking: this.state.ranking,
             type: this.state.type,
             director: this.state.director,    
@@ -43,11 +45,17 @@ class EditForm extends Component {
         return (
             <div>
                  <Form style={{ width: '18rem' }}>   
-                 <Form.Group>
+                    <Form.Group>
                         <Form.Control type="input" 
                         placeholder={this.props.title} 
                         onChange={(e) => this.handleChange(e, "title")}
                         value={this.state.title}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control type="input" 
+                        placeholder={this.props.image} 
+                        onChange={(e) => this.handleChange(e, "image")}
+                        value={this.state.image}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Control type="input" 
