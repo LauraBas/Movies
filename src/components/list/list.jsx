@@ -36,6 +36,10 @@ class List extends Component{
         this.setState({ createMode: !this.state.createMode })
     }
 
+    cancelCreateForm(){
+        this.setState({ createMode: false })
+    }
+
     createCard(movie){
         this.props.handleCreate(movie)
         this.toggleMovieForm();
@@ -72,6 +76,7 @@ class List extends Component{
                 {this.state.createMode 
                     ? <CreateForm                    
                         submitClick={(movie)=>this.createCard(movie)}
+                        cancelClick={()=>this.cancelCreateForm()}
                         />
                     : <Button variant="warning" onClick={this.toggleMovieForm}>Create</Button>}
             </div>

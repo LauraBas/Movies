@@ -23,3 +23,17 @@ test('should call submit method when submit button is clicked', () => {
     expect(submitClick).toHaveBeenCalledTimes(1)
     expect(submitClick).toHaveBeenCalledWith({title: "amelie", ranking:"8", type:"romantic", director:"Tiersenn"})
 })
+
+test('should call cancel method when cancel button is clicked', () => {
+    const cancelClickMock = jest.fn()
+    render(<CreateForm cancelClick={cancelClickMock}/>)
+
+    fireEvent.click(screen.getByText('Cancel'))
+
+    expect(cancelClickMock).toHaveBeenCalled()
+
+
+
+
+
+})

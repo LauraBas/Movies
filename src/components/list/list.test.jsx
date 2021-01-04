@@ -72,6 +72,17 @@ test('should display a form when new movie button is clicked', () => {
     expect(input).toBeInTheDocument()    
 });
 
+test('should clean the create form when cancel button is clicked', () => {
+    
+    render(<List />)   
+    fireEvent.click(screen.getByText("Create")) 
+    const submitButton = screen.queryByText('Submit')
+
+    fireEvent.click(screen.getByText("Cancel"))
+
+    expect(submitButton).not.toBeInTheDocument()    
+})
+
 test('should display a form when edit button is clicked', () =>{
     render (<List data={[
         {title: 'tenet', id:"0", ranking: 10, type:"accion", director:"Nollan"},

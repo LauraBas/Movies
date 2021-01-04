@@ -13,6 +13,7 @@ class CreateForm extends Component {
             director: "",
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleCancelClick = this.handleCancelClick.bind(this);
     }
 
     handleClick(e) {
@@ -24,6 +25,11 @@ class CreateForm extends Component {
             director: this.state.director,
         })
     }
+    handleCancelClick(e){
+        e.preventDefault();
+        return this.props.cancelClick()
+    }
+
     handleChange(e, field) {
         e.preventDefault();
         this.setState({
@@ -62,6 +68,7 @@ class CreateForm extends Component {
                     </Form.Group>
                     <ButtonGroup aria-label="Basic example">
                         <Button variant="success" type="submit" onClick={(e) => this.handleClick(e)}>Submit</Button>
+                        <Button variant="info" onClick={(e) => this.handleCancelClick(e)}>Cancel</Button>
                     </ButtonGroup>
                 </Form>
             </div>
