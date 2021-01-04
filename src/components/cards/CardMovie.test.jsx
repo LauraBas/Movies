@@ -14,6 +14,7 @@ test('Should render movies titles', () => {
     render (<CardMovie
         ranking="10, 10, 9"
         title="tenet, inception, amelie"
+        image="img/2.jpg, img/4.jpg, img/7.jpg"
         type="accion, drama, romantic"
         director="Christopher Nollan, Christopher Nollan, Yann Tiersenn"/>)
     const titles = screen.getByText('tenet, inception, amelie')

@@ -8,6 +8,7 @@ class CreateForm extends Component {
         super(props)
         this.state = {
             title: "",
+            image: "",
             ranking: "",
             type: "",
             director: "",
@@ -20,6 +21,7 @@ class CreateForm extends Component {
         e.preventDefault();
         return this.props.submitClick({
             title: this.state.title,
+            image: this.state.image,
             ranking: this.state.ranking,
             type: this.state.type,
             director: this.state.director,
@@ -47,6 +49,12 @@ class CreateForm extends Component {
                             placeholder="title"
                             onChange={(e) => this.handleChange(e, "title")}
                             value={this.state.title}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Control type="input" 
+                            placeholder="image"
+                            onChange={(e) => this.handleChange(e, "image")}
+                            value={this.state.image}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Control type="input" 

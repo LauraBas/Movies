@@ -12,6 +12,8 @@ test('should call submit method when submit button is clicked', () => {
     render(<CreateForm submitClick={submitClick}/>)
     const title = screen.getByPlaceholderText('title');
     fireEvent.change(title, { target: { value: 'amelie' } })
+    const image = screen.getByPlaceholderText('image');
+    fireEvent.change(image, { target: {value: 'img/amelie.jpg' }})
     const ranking =  screen.getByPlaceholderText('ranking');
     fireEvent.change(ranking, { target: { value: '8' } })
     const type = screen.getByPlaceholderText('type')
@@ -21,7 +23,7 @@ test('should call submit method when submit button is clicked', () => {
     fireEvent.click(screen.getByText('Submit'))
 
     expect(submitClick).toHaveBeenCalledTimes(1)
-    expect(submitClick).toHaveBeenCalledWith({title: "amelie", ranking:"8", type:"romantic", director:"Tiersenn"})
+    expect(submitClick).toHaveBeenCalledWith({title: "amelie",image:"img/amelie.jpg", ranking:"8", type:"romantic", director:"Tiersenn"})
 })
 
 test('should call cancel method when cancel button is clicked', () => {

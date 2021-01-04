@@ -12,7 +12,7 @@ const CardMovie = function(props) {
         <div>
             <Card style={{ width: '18rem' }}>
                 <Card.Header>{props.ranking}</Card.Header>
-                <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/' + props.title + ".jpg"} />
+                <Card.Img variant="top" src={process.env.PUBLIC_URL + props.image} />
                 <Card.Body>
                     <Card.Title>{props.title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{props.type}</Card.Subtitle>

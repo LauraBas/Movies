@@ -61,6 +61,7 @@ class List extends Component{
                                 key={item.id} 
                                 ranking={item.ranking}
                                 title={item.title} 
+                                image={item.image}
                                 type={item.type}
                                 director={item.director}
                                 id={item.id}
@@ -70,6 +71,7 @@ class List extends Component{
                             return <EditForm
                                 key={item.id} 
                                 title={item.title}
+                                image={item.image}
                                 ranking={item.ranking}
                                 type={item.type}
                                 director={item.director}

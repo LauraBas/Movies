@@ -10,9 +10,9 @@ function createMovie(movie){
 
 test('should display all cards from data',() => {
     render(<List data = {[
-        {title: 'tenet', id:"0", ranking: 10, type:"accion", director:"Nollan"},
-        {title: 'inception', id:"1" , ranking: 8, type:"drama", director:"Nollan"},
-        {title: 'amelie', id:"2" , ranking: 10, type:"romantic", director:"Tiersen"},
+        {title: 'tenet', image: "img/tenet.jpg",id:"0", ranking: 10, type:"accion", director:"Nollan"},
+        {title: 'inception', image: "img/inception.jpg", id:"1" , ranking: 8, type:"drama", director:"Nollan"},
+        {title: 'amelie',image: "img/amelie.jpg", id:"2" , ranking: 10, type:"romantic", director:"Tiersen"},
     ]} />);
 
     expect(screen.getByText('tenet')).toBeInTheDocument();
@@ -26,7 +26,7 @@ test('should calls handleDelete with id when delete button is clicked', () => {
     const handleDeleteMock = jest.fn()    
     render (<List 
                 handleDelete={handleDeleteMock} 
-                data={[{title: 'tenet', id:"1", ranking: 10, type:"accion", director:"Nollan"}]} />)
+                data={[{title: 'tenet', image: "img/tenet.jpg",id:"1", ranking: 10, type:"accion", director:"Nollan"}]} />)
     
     fireEvent.click(screen.getByText("Delete"))
 
@@ -39,12 +39,12 @@ test('should calls handleUpdate with movie when submit button in edit is clicked
     const handleUpdateMock = jest.fn()
     render (<List     
                 handleUpdate={handleUpdateMock} 
-                data={[{title: 'tenet', id:"0", ranking: 10, type:"accion", director:"Nollan"}]} />)
+                data={[{title: 'tenet',image: "img/tenet.jpg", id:"0", ranking: 10, type:"accion", director:"Nollan"}]} />)
 
     updateMovieTitle('tenet', 'inception')
 
     expect(handleUpdateMock).toHaveBeenCalled()
-    expect(handleUpdateMock).toHaveBeenCalledWith({title: 'inception', id:"0", ranking: 10, type:"accion", director:"Nollan"});
+    expect(handleUpdateMock).toHaveBeenCalledWith({title: 'inception',image: "img/tenet.jpg", id:"0", ranking: 10, type:"accion", director:"Nollan"});
 
 })
 
@@ -57,14 +57,14 @@ test('should calls handleCreate with movie when submit button is clicked', () =>
     createMovie('inception')
     
     expect(handleCreateMock).toHaveBeenCalled()
-    expect(handleCreateMock).toHaveBeenCalledWith({title: 'inception', director:'', ranking:'', type:''})
+    expect(handleCreateMock).toHaveBeenCalledWith({title: 'inception', image: '', director:'', ranking:'', type:''})
     
 })
 
 test('should display a form when create movie button is clicked', () => {
     render (<List data={[
-        {title: 'tenet', id:"0", ranking: 10, type:"accion", director:"Nollan"},
-        {title: 'amelie', id:"2" , ranking: 10, type:"romantic", director:"Tiersen"},       
+        {title: 'tenet', image: "img/tenet.jpg", id:"0", ranking: 10, type:"accion", director:"Nollan"},
+        {title: 'amelie',image: "img/amelie.jpg", id:"2" , ranking: 10, type:"romantic", director:"Tiersen"},       
     ]} />)
     fireEvent.click(screen.getByText("Create"))  
     const input = screen.getByPlaceholderText('title');
@@ -85,8 +85,8 @@ test('should clean the create form when cancel button is clicked', () => {
 
 test('should display a form when edit button is clicked', () =>{
     render (<List data={[
-        {title: 'tenet', id:"0", ranking: 10, type:"accion", director:"Nollan"},
-        {title: 'amelie', id:"2" , ranking: 10, type:"romantic", director:"Tiersen"},       
+        {title: 'tenet', image: "img/tenet.jpg", id:"0", ranking: 10, type:"accion", director:"Nollan"},
+        {title: 'amelie',image: "img/amelie.jpg", id:"2" , ranking: 10, type:"romantic", director:"Tiersen"}      
     ]} />)
     fireEvent.click(screen.getAllByText("Edit")[0])
     
@@ -95,8 +95,9 @@ test('should display a form when edit button is clicked', () =>{
 
 test('should clean the edit form when cancel button is clicked', () => {    
     render(<List data={[
-        {title: 'tenet', id:"0", ranking: 10, type:"accion", director:"Nollan"}]}/>)  
-    
+        {title: 'tenet', image: "img/tenet.jpg", id:"0", ranking: 10, type:"accion", director:"Nollan"},     
+    ]} />)
+        
     fireEvent.click(screen.getByText("Edit")) 
     const submitButton = screen.queryByText('Submit')
 
