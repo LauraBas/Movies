@@ -36,3 +36,14 @@ test('should call cancel edit method when cancel button is clicked', () => {
     expect(cancelEditClickMock).toHaveBeenCalled()
 })
 
+test('should return an error message if title field is empty', () => {
+    render(<EditForm title='tenet' image="img/tenet.jpg" id="1" ranking="10" type="accion" director="Nollan"/>)
+
+    const title = screen.getByPlaceholderText('tenet');
+    fireEvent.change(title, { target: { value: '' } })
+    
+    fireEvent.click(screen.getByText('Submit'))
+
+    expect(screen.getAllByText('Required field'))
+})
+
