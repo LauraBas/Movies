@@ -33,9 +33,15 @@ test('should call cancel method when cancel button is clicked', () => {
     fireEvent.click(screen.getByText('Cancel'))
 
     expect(cancelClickMock).toHaveBeenCalled()
+})
 
+test('should return an error message if title field is empty', () => {
+    render(<CreateForm />)
 
+    const title = screen.getByPlaceholderText('title');
+    fireEvent.change(title, { target: { value: '' } })
+    
+    fireEvent.click(screen.getByText('Submit'))
 
-
-
+    expect(screen.getAllByText('Required field'))
 })

@@ -5,6 +5,14 @@ function createMovie(movie){
     fireEvent.click(screen.getByText("Create Movie")); 
     const input = screen.getByPlaceholderText('title');
     fireEvent.change(input, { target: { value: movie } });
+    const image = screen.getByPlaceholderText('image');
+    fireEvent.change(image, { target: {value: 'img/amelie.jpg' }})
+    const ranking =  screen.getByPlaceholderText('ranking');
+    fireEvent.change(ranking, { target: { value: '8' } })
+    const type = screen.getByPlaceholderText('type')
+    fireEvent.change(type, { target: { value: 'romantic'}})
+    const director = screen.getByPlaceholderText('director')
+    fireEvent.change(director, { target: { value: 'Tiersenn'}})
     fireEvent.click(screen.getByText('Submit'));
 }
 
@@ -57,7 +65,7 @@ test('should calls handleCreate with movie when submit button is clicked', () =>
     createMovie('inception')
     
     expect(handleCreateMock).toHaveBeenCalled()
-    expect(handleCreateMock).toHaveBeenCalledWith({title: 'inception', image: '', director:'', ranking:'', type:''})
+    expect(handleCreateMock).toHaveBeenCalledWith({title: 'inception', image: 'img/amelie.jpg', director: 'Tiersenn', ranking:'8', type:'romantic'})
     
 })
 

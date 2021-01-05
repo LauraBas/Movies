@@ -83,22 +83,22 @@ test("should create a movie and refresh list", async () => {
     let tenetHasBeenCreated = false;
     server.use(
         rest.post('http://localhost:3001/peliculas', (req, res, ctx) => {
-            if (req.body.title == "Tenet") {
+            if (req.body.title == "Amelie" ) {
                 tenetHasBeenCreated = true;
                 return res(ctx.status(200));            
             }
         }),
         rest.get('http://localhost:3001/peliculas', (req, res, ctx) => {
             return tenetHasBeenCreated
-                ? res(ctx.json([{title: "Tenet", id: "0", ranking: "19", type: "Action", director: "Nolan"}]))
+                ? res(ctx.json([{title: "Amelie", image: "img/amelie.jpg", id: "0", ranking: "8", type: "romantic", director: "TIersenn"}]))
                 : res(ctx.json([]))
         })
     )
     render(<ListContainer />)
 
-    await createMovieWithTitle('Tenet')
+    await createMovieWithTitle('Amelie')
 
-    expect(await screen.findByText("Tenet")).toBeInTheDocument();
+    expect(await screen.findByText("Amelie")).toBeInTheDocument();
 });
 
 async function updateMovieTitle(movieToUpdate, movieChanged) {
@@ -112,5 +112,13 @@ async function createMovieWithTitle(movieTitle){
     fireEvent.click(screen.getByText("Create Movie")); 
     const input = screen.getByPlaceholderText('title');
     fireEvent.change(input, { target: { value: movieTitle } });
+    const image = screen.getByPlaceholderText('image');
+    fireEvent.change(image, { target: {value: 'img/amelie.jpg' }})
+    const ranking =  screen.getByPlaceholderText('ranking');
+    fireEvent.change(ranking, { target: { value: '8' } })
+    const type = screen.getByPlaceholderText('type')
+    fireEvent.change(type, { target: { value: 'romantic'}})
+    const director = screen.getByPlaceholderText('director')
+    fireEvent.change(director, { target: { value: 'Tiersenn'}})
     fireEvent.click(screen.getByText('Submit'));
 }
