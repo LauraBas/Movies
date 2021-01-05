@@ -58,7 +58,8 @@ class EditForm extends Component {
                         value={this.state.image}/>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="input" 
+                        <Form.Control type="number" 
+                        max="10" min="1" 
                         placeholder={this.props.ranking} 
                         onChange={(e) => this.handleChange(e, "ranking")}
                         value={this.state.ranking}/>
