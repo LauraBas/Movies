@@ -2,6 +2,7 @@ import  React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Input from 'react-bootstrap/InputGroup';
 
 class CreateForm extends Component {
     constructor(props){
@@ -57,10 +58,11 @@ class CreateForm extends Component {
                             value={this.state.image}/>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="input" 
+                        <Form.Control type="number" 
+                            max="10" min="1"
                             placeholder="ranking" 
                             onChange={(e) => this.handleChange(e, "ranking")}
-                            value={this.state.ranking}/>
+                            value={this.state.ranking} />
                     </Form.Group>                
                     <Form.Group>
                         <Form.Control type="input" 

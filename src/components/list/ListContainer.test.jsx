@@ -1,5 +1,4 @@
 import { render, screen, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
-import ApiClient from "../../ApiClient"
 import ListContainer from "./ListContainer";
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
@@ -110,7 +109,7 @@ async function updateMovieTitle(movieToUpdate, movieChanged) {
 }
 
 async function createMovieWithTitle(movieTitle){
-    fireEvent.click(screen.getByText("Create")); 
+    fireEvent.click(screen.getByText("Create Movie")); 
     const input = screen.getByPlaceholderText('title');
     fireEvent.change(input, { target: { value: movieTitle } });
     fireEvent.click(screen.getByText('Submit'));

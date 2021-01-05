@@ -59,7 +59,7 @@ class List extends Component{
                         submitClick={(movie)=>this.createCard(movie)}
                         cancelClick={()=>this.cancelCreateForm()}
                         />
-                    : <Button variant="warning" onClick={this.toggleMovieForm}>Create</Button>}               
+                    : <Button variant="warning" onClick={this.toggleMovieForm}>Create Movie</Button>}               
                 <CardDeck>
                     {this.props.data && this.props.data.map(item => {
                         if (this.state.editId !== item.id) {

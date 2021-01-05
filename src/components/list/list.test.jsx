@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import List from "./List";
 
 function createMovie(movie){
-    fireEvent.click(screen.getByText("Create")); 
+    fireEvent.click(screen.getByText("Create Movie")); 
     const input = screen.getByPlaceholderText('title');
     fireEvent.change(input, { target: { value: movie } });
     fireEvent.click(screen.getByText('Submit'));
@@ -66,7 +66,7 @@ test('should display a form when create movie button is clicked', () => {
         {title: 'tenet', image: "img/tenet.jpg", id:"0", ranking: 10, type:"accion", director:"Nollan"},
         {title: 'amelie',image: "img/amelie.jpg", id:"2" , ranking: 10, type:"romantic", director:"Tiersen"},       
     ]} />)
-    fireEvent.click(screen.getByText("Create"))  
+    fireEvent.click(screen.getByText("Create Movie"))  
     const input = screen.getByPlaceholderText('title');
 
     expect(input).toBeInTheDocument()    
@@ -75,7 +75,7 @@ test('should display a form when create movie button is clicked', () => {
 test('should clean the create form when cancel button is clicked', () => {
     
     render(<List />)   
-    fireEvent.click(screen.getByText("Create")) 
+    fireEvent.click(screen.getByText("Create Movie")) 
     const submitButton = screen.queryByText('Submit')
 
     fireEvent.click(screen.getByText("Cancel"))
